@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ALYVON Rentals - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0b1020; --card:#121933; --muted:#8aa0ff; --text:#e9edff; --accent:#4f66ff; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    header{padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,0.06);position:sticky;top:0;background:linear-gradient(180deg, rgba(11,16,32,0.95), rgba(11,16,32,0.85));backdrop-filter:blur(6px)}
+    header img{width:36px;height:36px;border-radius:8px}
+    header h1{font-size:18px;margin:0;font-weight:700}
+    .container{max-width:1100px;margin:0 auto;padding:18px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+    .card{background:linear-gradient(180deg,#111735,#0e1530);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px 14px 6px;box-shadow:0 10px 30px rgba(0,0,0,0.25)}
+    .card h2{margin:6px 6px 10px;font-size:16px}
+    .muted{color:var(--muted);font-size:12px}
+    .table{width:100%;border-collapse:separate;border-spacing:0 8px}
+    .row{display:grid;grid-template-columns:80px 1fr 120px 120px 120px;gap:10px;align-items:center;padding:10px 10px;border:1px solid rgba(255,255,255,0.06);border-radius:10px;background:linear-gradient(180deg,#111733,#0f1631)}
+    .row.header{background:transparent;border-color:transparent;color:#a9b4ff}
+    .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;border:1px solid rgba(255,255,255,0.12)}
+    .status-active{color:#ffd166;border-color:#ffd16633;background:#ffd16614}
+    .status-returned{color:#22c55e;border-color:#22c55e33;background:#22c55e14}
+    .empty{padding:24px 12px;color:#9aa8ff}
+    footer{padding:24px 20px;color:#8091ff80;text-align:center;font-size:12px}
+    .pill{background:#19224b;border:1px solid #2b3a7c;color:#cbd6ff;border-radius:999px;padding:4px 10px;font-size:11px}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/logo.png" alt="ALYVON" onerror="this.style.display='none'">
+    <div>
+      <h1>ALYVON Rentals</h1>
+      <div class="muted">Read‑only dashboard (GHS)</div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="grid">
+      <section class="card">
+        <h2>Active Rentals <span id="active-count" class="pill">0</span></h2>
+        <div class="table" id="active-list"></div>
+      </section>
+      <section class="card">
+        <h2>Rental History <span id="history-count" class="pill">0</span></h2>
+        <div class="table" id="history-list"></div>
+      </section>
+    </div>
+  </div>
+  <footer>
+    © <span id="year"></span> ALYVON. Read‑only status board for mobile and web.
+  </footer>
+  <script>
+    const $ = (id)=>document.getElementById(id);
+    const yearEl = document.getElementById('year'); yearEl.textContent = new Date().getFullYear();
+    const currency = (v)=>`GHS ${Number(v||0).toFixed(2)}`;
+    const fmt = (d)=> d ? new Date(d).toISOString().slice(0,10) : '';
+
+    async function loadJSON(path){
+      try{
+        const res = await fetch(path, {cache:'no-store'});
+        if(!res.ok) throw new Error('HTTP '+res.status);
+        return await res.json();
+      }catch(e){
+        console.warn('Failed to load', path, e);
+        return null;
+      }
+    }
+
+    function rowHeader(columns){
+      const el = document.createElement('div');
+      el.className = 'row header';
+      el.innerHTML = columns.map(c=>`<div>${c}</div>`).join('');
+      return el;
+    }
+
+    function renderActive(data){
+      const c = $('active-list'); c.innerHTML='';
+      c.appendChild(rowHeader(['Customer','Items','Start','Return','Amount']));
+      if(!data || !data.length){
+        c.innerHTML += `<div class='empty'>No active rentals.</div>`; $('active-count').textContent='0'; return;
+      }
+      $('active-count').textContent = data.length;
+      data.forEach(r=>{
+        const div = document.createElement('div');
+        div.className='row';
+        div.innerHTML = `
+          <div><span class='badge status-active'>Active</span></div>
+          <div>${r.customer}</div>
+          <div>${fmt(r.start_date)}</div>
+          <div>${fmt(r.return_date)}</div>
+          <div>${currency(r.total_amount)}</div>
+        `;
+        // Insert items after customer name
+        const nameCell = div.children[1];
+        const items = (r.items||[]).join(', ');
+        nameCell.innerHTML = `${nameCell.innerHTML}<div class='muted' style='margin-top:2px'>${items}</div>`;
+        c.appendChild(div);
+      });
+    }
+
+    function renderHistory(data){
+      const c = $('history-list'); c.innerHTML='';
+      c.appendChild(rowHeader(['Status','Customer','Start','Return','Amount']));
+      if(!data || !data.length){
+        c.innerHTML += `<div class='empty'>No rental history yet.</div>`; $('history-count').textContent='0'; return;
+      }
+      $('history-count').textContent = data.length;
+      data.forEach(r=>{
+        const div = document.createElement('div');
+        div.className='row';
+        const returned = !!r.is_returned;
+        div.innerHTML = `
+          <div><span class='badge ${returned?'status-returned':'status-active'}'>${returned?'Returned':'Active'}</span></div>
+          <div>${r.customer}</div>
+          <div>${fmt(r.start_date)}</div>
+          <div>${fmt(r.return_date)}</div>
+          <div>${currency(r.total_amount)}</div>
+        `;
+        const nameCell = div.children[1];
+        nameCell.innerHTML = `${nameCell.innerHTML}<div class='muted' style='margin-top:2px'>${(r.items||[]).join(', ')}</div>`;
+        c.appendChild(div);
+      });
+    }
+
+    async function init(){
+      const [active, history] = await Promise.all([
+        loadJSON('/data/active_rentals.json'),
+        loadJSON('/data/rental_history.json')
+      ]);
+      renderActive(active||[]);
+      renderHistory(history||[]);
+    }
+    init();
+  </script>
+</body>
+</html>
+
+
