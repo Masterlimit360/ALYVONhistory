@@ -1,1 +1,70 @@
-[{"customer": "JUNIOR", "start_date": "2025-10-13", "return_date": "2025-10-14", "items": ["Gold Chaffing Dish x2", "Red Food Warmer(Small) x1"], "total_amount": 150.0, "is_returned": true}, {"customer": "JUNIOR", "start_date": "2025-10-15", "return_date": "2025-10-16", "items": ["Gold Chaffing Dish x1"], "total_amount": 50.0, "is_returned": true}, {"customer": "Mr. Aluna", "start_date": "2025-10-20", "return_date": "2025-10-21", "items": ["Cooler x2"], "total_amount": 100.0, "is_returned": true}, {"customer": "Mr. Elijah", "start_date": "2025-10-20", "return_date": "2025-10-21", "items": ["Cake Table(Big) x1"], "total_amount": 30.0, "is_returned": true}, {"customer": "GCB Bank", "start_date": "2025-10-20", "return_date": "2025-10-21", "items": ["Warmer(Small) x1"], "total_amount": 50.0, "is_returned": true}, {"customer": "NAC", "start_date": "2025-11-28", "return_date": "2025-11-29", "items": ["Carpet x3"], "total_amount": 450.0, "is_returned": true}, {"customer": "Kim", "start_date": "2025-12-01", "return_date": "2025-12-02", "items": ["Chairs x80", "Chair covers x20", "Canopy x2"], "total_amount": 500.0, "is_returned": true}]
+[
+  {
+    "customer": "JUNIOR",
+    "start_date": "2025-10-13",
+    "return_date": "2025-10-14",
+    "items": [
+      "Gold Chaffing Dish x2",
+      "Red Food Warmer(Small) x1"
+    ],
+    "total_amount": 150.0,
+    "is_returned": true
+  },
+  {
+    "customer": "JUNIOR",
+    "start_date": "2025-10-15",
+    "return_date": "2025-10-16",
+    "items": [
+      "Gold Chaffing Dish x1"
+    ],
+    "total_amount": 50.0,
+    "is_returned": true
+  },
+  {
+    "customer": "Mr. Aluna",
+    "start_date": "2025-10-20",
+    "return_date": "2025-10-21",
+    "items": [
+      "Cooler x2"
+    ],
+    "total_amount": 100.0,
+    "is_returned": true
+  },
+  {
+    "customer": "Mr. Elijah",
+    "start_date": "2025-10-20",
+    "return_date": "2025-10-21",
+    "items": [
+      "Cake Table(Big) x1"
+    ],
+    "total_amount": 30.0,
+    "is_returned": true
+  },
+  {
+    "customer": "GCB Bank",
+    "start_date": "2025-10-20",
+    "return_date": "2025-10-21",
+    "items": [
+      "Warmer(Small) x1"
+    ],
+    "total_amount": 50.0,
+    "is_returned": true
+  },
+  {
+    "customer": "PAPA",
+    "start_date": "2025-12-08",
+    "return_date": "2025-12-09",
+    "items": [
+      "Chairs (White) x80",
+      "Chilvalry x40",
+      "Wine Glass x40",
+      "Underplates x40",
+      "Cocktail Table x1",
+      "Gladiator chairs(Black) x40",
+      "Green Carpet x3",
+      "Canopies x1"
+    ],
+    "total_amount": 1125.0,
+    "is_returned": true
+  }
+]
