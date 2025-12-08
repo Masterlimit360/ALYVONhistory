@@ -45,24 +45,6 @@
     "rented_quantity": 0
   },
   {
-    "id": 6,
-    "name": "Cake Table(Big)",
-    "description": "",
-    "total_quantity": 1,
-    "available_quantity": 2,
-    "daily_rate": 50.0,
-    "rented_quantity": -1
-  },
-  {
-    "id": 5,
-    "name": "Warmer(Small)",
-    "description": "",
-    "total_quantity": 2,
-    "available_quantity": 3,
-    "daily_rate": 50.0,
-    "rented_quantity": -1
-  },
-  {
     "id": 10,
     "name": "Chairs (Black/Red)",
     "description": "",
@@ -139,71 +121,89 @@
     "name": "Chairs (White)",
     "description": "",
     "total_quantity": 100,
-    "available_quantity": 180,
+    "available_quantity": 100,
     "daily_rate": 3.0,
-    "rented_quantity": -80
+    "rented_quantity": 0
+  },
+  {
+    "id": 6,
+    "name": "Cake Table(Big)",
+    "description": "",
+    "total_quantity": 1,
+    "available_quantity": 1,
+    "daily_rate": 50.0,
+    "rented_quantity": 0
   },
   {
     "id": 15,
     "name": "Canopies",
     "description": "",
     "total_quantity": 2,
-    "available_quantity": 3,
+    "available_quantity": 2,
     "daily_rate": 100.0,
-    "rented_quantity": -1
+    "rented_quantity": 0
   },
   {
     "id": 16,
     "name": "Cocktail Table",
     "description": "",
     "total_quantity": 8,
-    "available_quantity": 9,
+    "available_quantity": 8,
     "daily_rate": 25.0,
-    "rented_quantity": -1
+    "rented_quantity": 0
   },
   {
     "id": 18,
     "name": "Green Carpet",
     "description": "",
     "total_quantity": 3,
-    "available_quantity": 6,
+    "available_quantity": 3,
     "daily_rate": 200.0,
-    "rented_quantity": -3
+    "rented_quantity": 0
   },
   {
     "id": 21,
     "name": "Wine Glass",
     "description": "",
     "total_quantity": 100,
-    "available_quantity": 140,
+    "available_quantity": 100,
     "daily_rate": 4.0,
-    "rented_quantity": -40
+    "rented_quantity": 0
   },
   {
     "id": 22,
     "name": "Gladiator chairs(Black)",
     "description": "",
     "total_quantity": 40,
-    "available_quantity": 80,
+    "available_quantity": 40,
     "daily_rate": 5.0,
-    "rented_quantity": -40
+    "rented_quantity": 0
   },
   {
     "id": 23,
     "name": "Underplates",
     "description": "",
     "total_quantity": 160,
-    "available_quantity": 200,
+    "available_quantity": 160,
     "daily_rate": 3.0,
-    "rented_quantity": -40
+    "rented_quantity": 0
   },
   {
     "id": 24,
     "name": "Chilvalry",
     "description": "",
     "total_quantity": 47,
-    "available_quantity": 87,
+    "available_quantity": 47,
     "daily_rate": 7.0,
-    "rented_quantity": -40
+    "rented_quantity": 0
+  },
+  {
+    "id": 5,
+    "name": "Warmer(Small)",
+    "description": "",
+    "total_quantity": 2,
+    "available_quantity": 2,
+    "daily_rate": 50.0,
+    "rented_quantity": 0
   }
 ]
