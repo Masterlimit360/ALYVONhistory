@@ -1,14 +1,5 @@
 [
   {
-    "id": 4,
-    "name": "Cooler",
-    "description": "",
-    "total_quantity": 3,
-    "available_quantity": 5,
-    "daily_rate": 50.0,
-    "rented_quantity": -2
-  },
-  {
     "id": 3,
     "name": "Red Food Warmer(Small)",
     "description": "",
@@ -203,6 +194,15 @@
     "description": "",
     "total_quantity": 2,
     "available_quantity": 2,
+    "daily_rate": 50.0,
+    "rented_quantity": 0
+  },
+  {
+    "id": 4,
+    "name": "Cooler",
+    "description": "",
+    "total_quantity": 3,
+    "available_quantity": 3,
     "daily_rate": 50.0,
     "rented_quantity": 0
   }
